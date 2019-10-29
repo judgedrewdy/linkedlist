@@ -50,6 +50,23 @@ public class LinkedList {
 		
 	}
 	
+	public boolean remove(int nodeIndex) {
+		Node currentNode = head;
+		int count = 0;
+		boolean found = false;
+		
+		while (currentNode != null && !found) {
+			
+			if(count == nodeIndex) {
+				currentNode.setNextNode(currentNode.getNextNode().getNextNode());
+				return found = true;
+			}
+			currentNode = currentNode.getNextNode();
+			count++;
+		}
+		return found;
+	}
+	
 	public int listLength() {
 		int count = 0;
 		Node currentNode = head;
