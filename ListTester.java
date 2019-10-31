@@ -29,17 +29,27 @@ public class ListTester {
 			input = scnr.nextLine();
 			if (input.equals("a")) {
 				System.out.println("Type the integer you would like to append.");
-				int appended = scnr.nextInt();
-				
-				newList.append(appended);
-				scnr.nextLine();
+				if (scnr.hasNextInt()) {
+					int appended = scnr.nextInt();
+					newList.append(appended);
+					scnr.nextLine();
+				}
+				else {
+					System.out.println("Not an integer.");
+				}
 			}
 			else if (input.equals("p")) {
 				System.out.println("Type the integer you would like to prepend.");
-				int prepended = scnr.nextInt();
+				if (scnr.hasNextInt()) {
+					int prepended = scnr.nextInt();
 				
-				newList.prepend(prepended);
-				scnr.nextLine();
+				
+					newList.prepend(prepended);
+					scnr.nextLine();
+				}
+				else {
+					System.out.println("Not an integer.");
+				}
 			}
 			else if (input.equals("i")) {
 				System.out.println("Type which integer you would like to insert after.");
@@ -53,10 +63,14 @@ public class ListTester {
 			}
 			else if (input.equals("r")) {
 				System.out.println("Type the integer you would like to remove.");
+				if (scnr.hasNextInt()) {
 				int removed = scnr.nextInt();
 				scnr.nextLine();
-				
 				newList.remove(removed);
+				}
+				else {
+					System.out.println("Not an integer.");
+				}
 			}
 			
 			else if (input.equals("g")) {
@@ -64,6 +78,9 @@ public class ListTester {
 			}
 			else if (input.equals("l")) {
 				newList.printList();
+			}
+			else if (input.equals("q")) {
+				break;
 			}
 			else {
 				System.out.println("Not valid input.");
