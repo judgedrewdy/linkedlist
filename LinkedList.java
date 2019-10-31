@@ -43,28 +43,33 @@ public class LinkedList {
 			while (currentNode != null) {
 				if(currentNode.getData() == dataInsertingAfter) {
 					Node newNode = new Node(nodeData, currentNode.getNextNode());
-					currentNode.setNextNode(newNode);		
+					currentNode.setNextNode(newNode);	
+					break;
 				}
 				currentNode = currentNode.getNextNode();
 			}
 		
 	}
 	
-	public boolean remove(int nodeIndex) {
+	public void remove(int dataToRemove) {
 		Node currentNode = head;
-		int count = 0;
-		boolean found = false;
 		
-		while (currentNode != null && !found) {
+		while(currentNode != null) {
 			
-			if(count == nodeIndex) {
-				currentNode.setNextNode(currentNode.getNextNode().getNextNode());
-				return found = true;
+			if(currentNode.getData() == dataToRemove) {
+				head = currentNode.getNextNode();
+				break;
 			}
+			else if (currentNode.getNextNode() == null) {
+				break;
+			}
+			else if(currentNode.getNextNode().getData() == dataToRemove) {
+				currentNode.setNextNode(currentNode.getNextNode().getNextNode());
+				break;
+			}
+			
 			currentNode = currentNode.getNextNode();
-			count++;
 		}
-		return found;
 	}
 	
 	public int listLength() {
